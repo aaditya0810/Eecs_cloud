@@ -44,7 +44,7 @@ public class GRPCClientService {
 		ManagedChannel ch5 = ManagedChannelBuilder.forAddress("35.242.185.181", 9090).usePlaintext().build();
 		ManagedChannel ch6 = ManagedChannelBuilder.forAddress("34.105.159.6", 9090).usePlaintext().build();
 		ManagedChannel ch7 = ManagedChannelBuilder.forAddress("34.147.50.246", 9090).usePlaintext().build();
-		ManagedChannel ch8 = ManagedChannelBuilder.forAddress("34.105.195.6", 9090).usePlaintext().build();
+		ManagedChannel ch8 = ManagedChannelBuilder.forAddress("34.105.165.204", 9090).usePlaintext().build();
 		int QUE = matone.length;
 		int block = QUE/2;
 		int[][] A = new int[block][block];
