@@ -5,6 +5,7 @@ import com.example.grpc.server.grpcserver.PongResponse;
 import com.example.grpc.server.grpcserver.PingPongServiceGrpc;
 import com.example.grpc.server.grpcserver.MatrixRequest;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -36,7 +37,7 @@ public class GRPCClientService {
     }
     MatrixServiceGrpc.MatrixServiceBlockingStub[] stubset = new MatrixServiceGrpc.MatrixServiceBlockingStub[8];
 	int stubnum = 0;
-	public int[][] mult(int[][] matone, int[][] mattwo, int deadline) throws InterruptedException, ExecutionException {
+	public int[][] mult(int[][] matone, int[][] mattwo, int deadline) throws InterruptedException, ExecutionException, IOException {
 		ManagedChannel ch1 = ManagedChannelBuilder.forAddress("34.142.82.213", 9090).usePlaintext().build();
 		ManagedChannel ch2 = ManagedChannelBuilder.forAddress("34.142.64.202", 9090).usePlaintext().build();
 		ManagedChannel ch3 = ManagedChannelBuilder.forAddress("35.246.21.57", 9090).usePlaintext().build();
@@ -45,6 +46,16 @@ public class GRPCClientService {
 		ManagedChannel ch6 = ManagedChannelBuilder.forAddress("34.105.159.6", 9090).usePlaintext().build();
 		ManagedChannel ch7 = ManagedChannelBuilder.forAddress("34.147.50.246", 9090).usePlaintext().build();
 		ManagedChannel ch8 = ManagedChannelBuilder.forAddress("34.125.203.252", 9090).usePlaintext().build();
+
+		// ManagedChannel ch1 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch2 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch3 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch4 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch5 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch6 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch7 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		// ManagedChannel ch8 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+
 		int QUE = matone.length;
 		int block = QUE/2;
 		int[][] A = new int[block][block];
@@ -105,7 +116,10 @@ public class GRPCClientService {
 		long footprint = stop - start; //timetaken for just 1 block of multiplication, so that we can find time reqd for entire operation
 		int serversneeded = (int) Math.ceil( (footprint*12)/deadline);
 		serversneeded = serversneeded > 8 ? 8 : serversneeded;
-		
+		System.out.println("Servers Needed : "+serversneeded);
+
+		System.out.println("Footprint : "+footprint);
+
 		stubset[0] = stub1;
 		stubset[1] = stub2;
 		stubset[2] = stub3;
