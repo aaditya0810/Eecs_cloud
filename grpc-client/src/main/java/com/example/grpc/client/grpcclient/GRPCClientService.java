@@ -37,14 +37,14 @@ public class GRPCClientService {
     MatrixServiceGrpc.MatrixServiceBlockingStub[] stubset = new MatrixServiceGrpc.MatrixServiceBlockingStub[8];
 	int stubnum = 0;
 	public int[][] mult(int[][] matone, int[][] mattwo, int deadline) throws InterruptedException, ExecutionException {
-		ManagedChannel ch1 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch2 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch3 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch4 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch5 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch6 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch7 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
-		ManagedChannel ch8 = ManagedChannelBuilder.forAddress("localhost", 9090).usePlaintext().build();
+		ManagedChannel ch1 = ManagedChannelBuilder.forAddress("34.142.82.213", 9090).usePlaintext().build();
+		ManagedChannel ch2 = ManagedChannelBuilder.forAddress("34.142.64.202", 9090).usePlaintext().build();
+		ManagedChannel ch3 = ManagedChannelBuilder.forAddress("35.246.21.57", 9090).usePlaintext().build();
+		ManagedChannel ch4 = ManagedChannelBuilder.forAddress("35.242.185.92", 9090).usePlaintext().build();
+		ManagedChannel ch5 = ManagedChannelBuilder.forAddress("35.242.185.181", 9090).usePlaintext().build();
+		ManagedChannel ch6 = ManagedChannelBuilder.forAddress("34.105.159.6", 9090).usePlaintext().build();
+		ManagedChannel ch7 = ManagedChannelBuilder.forAddress("34.147.50.246", 9090).usePlaintext().build();
+		ManagedChannel ch8 = ManagedChannelBuilder.forAddress("34.105.195.6", 9090).usePlaintext().build();
 		int QUE = matone.length;
 		int block = QUE/2;
 		int[][] A = new int[block][block];
